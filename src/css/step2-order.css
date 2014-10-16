@@ -1,0 +1,78 @@
+/*  Reset:Begin */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,audio,canvas,details,figcaption,figure,footer,header,hgroup,mark,menu,meter,nav,output,progress,section,summary,time,video{border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent;margin:0;padding:0;}body{line-height:1;}article,aside,dialog,figure,footer,header,hgroup,nav,section,blockquote{display:block;}nav ul{list-style:none;}ol{list-style:decimal;}ul{list-style:disc;}ul ul{list-style:circle;}blockquote,q{quotes:none;}blockquote:before,blockquote:after,q:before,q:after{content:none;}ins{text-decoration:underline;}del{text-decoration:line-through;}mark{background:none;}abbr[title],dfn[title]{border-bottom:1px dotted #000;cursor:help;}table{border-collapse:collapse;border-spacing:0;}hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0;}input[type=submit],input[type=button],button{margin:0px;padding:0px;}input,select,a img{vertical-align:middle;}a {text-decoration:none;}
+img{border:none;}a{cursor:pointer;}.clear{clear:both;}p{margin-bottom:15px;}ul{list-style-type:none;}
+/*  Reset:End */
+
+/*  Global Structure:Begin */
+body { background:#f5faff; font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height:21px; color:#000; text-align:center; min-width: 1100px;}
+.red {color: red;}
+.wrapper {position:relative; width:1100px; margin:0 auto; text-align:left; }
+
+.order-block-01 {position:relative; height: 978px; background:url('../img/step2_order_01.jpg') top center no-repeat;}
+
+
+.top-alert {position:absolute; top: 29px; left: 160px;  width: 890px;}
+
+.order-summary {position: absolute; top: 220px; left: 270px; width: 430px; font-weight: bold; font-size: 16px; color: black;}
+.discount-bar {background:#4bbe01; color: #fff; padding:10px; margin-bottom: 15px; text-align: center; font-weight: normal;}
+.cart-contents {float: left;}
+.cart-prices {float: right; text-align: right;}
+.item-desc {font-size: 14px; font-weight: normal;}
+.arrival-date {position: absolute; top: 550px; left: 260px; width: 420px; font-weight: bold; font-size: 13px; color: black; text-align: right;}
+/*  Order Form:Begin */
+.order-form-container {position:absolute; top:280px; right:55px; width:290px; padding:10px;  z-index:999;}
+.form-title {margin:10px auto; padding-bottom:10px; border-bottom:1px dotted #959595; }
+.cc-icons {position: relative; right: 10px; margin:5px auto!important;}
+.form-total {border-top: 1px dotted #bbb; padding: 15px; border-bottom: 1px dotted #bbb; margin:25px auto!important;}
+.form-element { margin-bottom:1px; }
+.form-element label {display:block; float:left; position:relative; top:2px; width:36%!important; text-align:right; margin-right:10px; color: black; font-weight: bold; font-size: 13px;}
+.form-input-full { width:100%!important; clear:both; }
+.form-input-full input {padding:2px; text-align:left; border: 1px solid #e3a8d5; }
+.form-input-full select {padding:2px; width:58%!important; text-align:left; border: 1px solid #e3a8d5;  }
+.form-input-full input.checkbox { }
+.form-input-2col {}
+.form-input-2col input {float:left; padding:3px; width:25%!important; text-align:left; margin-right:10px; border: 1px solid #e3a8d5; }
+.form-input-2col select {float:left; padding:3px; width:26%!important; text-align:left; margin-right:10px; border: 1px solid #e3a8d5;  }
+.form-input-2col input.checkbox { }
+.form-button {cursor:pointer; position: relative; right: 10px; width: 296px; height: 96px; background: url(../img/button-rush-my-tiral.png) no-repeat; border: none; margin: 30px auto!important;}
+a.security-code {position:relative; top:6px; font-size:11px; color:#000; }
+a.security-code:hover {text-decoration:underline; }
+.whatiscvv {
+  background: url("../img/cvv2.gif") no-repeat scroll 0 0 transparent;
+    bottom: 0;
+    display: none;
+    height: 417px;
+    overflow: hidden;
+    position: absolute;
+    right: 120px;
+    width: 179px;
+    z-index: 9999;
+}
+#CC_CVV {
+}
+.cvv-help {
+  position: relative;
+  top: 5px;
+  color: #444040; 
+  font-size: 11px;
+}
+
+.disclaimer {position: absolute; top: 700px; left: 60px; width: 650px; text-align: justify; color: #999; font-size: 10px; line-height: 11px;}
+
+.button-processing {position: relative; text-align: center; margin: 30px auto;}
+
+.form-input-full .ccv{
+    width: 50px;
+}
+
+/*  Footer:Begin */
+.footer {
+    font-size: 12px;
+    line-height: 14px;
+    position: absolute;
+    text-align: center;
+    top: 841px;
+    width: 1077px;
+}
+.footer a {color:#000; text-decoration: underline;}
+.footer a:hover {color:#bb0056; }
