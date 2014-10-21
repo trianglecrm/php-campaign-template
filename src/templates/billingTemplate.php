@@ -1,18 +1,5 @@
 <?php
 
-    include 'TriangleCRM/Autoloader.php';
-    
-    require_once "TriangleCRM/formvalidator.php";
-    
-    use TriangleCRM\Controller as api;
-    
-
-    $controller = new Controller("boostrap");
-
-    $settings = $controller->GetModel("indexBootstrap");  
-    $requiredJson = $controller->GetModel('billingFormRequired');
-    $required = json_decode($requiredJson);
-
     $states = array(
         'AL'=>'Alabama',
         'AK'=>'Alaska',
@@ -121,8 +108,8 @@
             if($result->State == 'Success'){
                 $vars['prospectID']=$result->Result->ProspectID;
                 setcookie("billingInfo",serialize($vars));
+                setcookie("prospectID",$result->Result->ProspectID);
                 echo '<script>
-                        internal = 1;
                         window.location.href = "/order.php";
                       </script>';
             }
@@ -154,7 +141,7 @@
     }
     
 ?>
-<form Method="post" name='opt_in_form' id='opt_in_form'>
+<form Method="post" name='opt_in_form' id='opt_in_form' class='templateForm'>
     <input type="hidden" value="submit" name="Submit"/>
         <div id="summary" class="red"></div>
         <?php if($required->Result->firstName){ ?>
@@ -257,7 +244,7 @@
                     name="zip" 
                     id="zip" 
                     maxlength="5" 
-                    class="textInput shipping zip" 
+                    class="textInput shipping zip onlyNumbers" 
                     title="Please, enter valid zip. Numbers Only" 
                     value="" 
                     required 
@@ -538,7 +525,7 @@
                     type="text" 
                     name="phone" 
                     id="phone" 
-                    class="phone shipping textInput" 
+                    class="phone shipping textInput onlyNumbers" 
                     maxlength="10"
                     title="Please, enter valid Shipping phone number. Numbers only"
                     value="" 
@@ -558,7 +545,7 @@
                     required
                     /></div>
         <?php } ?>
-        <input tabindex="9" class="form-button" type='submit' id="button-submit" value="" readonly/>
+        <input tabindex="9" class="form-button" type='submit' id="button-submit" value="submit" readonly/>
         <div class="button-processing" id="button-processing" style="display:none;"><img src="img/loading.gif" /><br />Processing...</div>
 </form>
 <script>

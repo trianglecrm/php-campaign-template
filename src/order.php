@@ -9,7 +9,7 @@
         <meta name=viewport content="width=device-width, initial-scale=1">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="favicon.ico" />
-        <link type="text/css" rel="stylesheet" href="css/order.css"/>
+        <link type="text/css" rel="stylesheet" href="css/index.css"/>
         <link type="text/css" rel="stylesheet" href="css/jNotify.jquery.css"/>
         <!-- Scripts -->
         <script>
@@ -17,6 +17,7 @@
         </script>
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/jquery.cookie.js"></script>
+        <script type="text/javascript" src="js/jquery.maskedinput.min.js"></script>
         <script type="text/javascript" src='js/jNotify.jquery.min.js'></script>
         <script type="text/javascript" src="js/billing/jsbn.js"></script>
         <script type="text/javascript" src="js/billing/rsa.js"></script>
@@ -24,11 +25,6 @@
         <script src="js/scripts.js"></script>
     </head>
     <body>
-            <div class="header-alert">
-                <b>WARNING:</b> Due to popular TV demand our stores are struggling to keep supply in stock. As of {{getDate(0)}}<br />
-                we do have a limited supply IN STOCK and ready to ship within 24 hours.</div>
-            <div class="safe-purchase-badge">
-            </div>
             <?php include_once('templates/offers/offer.html'); ?>
             <div class="wrapper">
                 <?php include_once('templates/headers/header.html'); ?>
