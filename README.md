@@ -61,6 +61,7 @@ This template uses a bootstrap object coming from the server, with information l
 - successRedirect
 - downSell
 - upSell
+- successDownSell *downsell page url for the success page*
 
 the purpose of this implementations is to avoid JS edition, only being needed the editing of the config.ini file.
 
@@ -76,6 +77,7 @@ campaign_id = '117'
 successRedirect = 'order.php'
 downSell = 'step3.php'
 upSell = 'step2-order.php'
+successDownSell = 'index.php' ;leave it in blank if you don't want a downsell for the success page
 ```
 
 ##Templates explain
