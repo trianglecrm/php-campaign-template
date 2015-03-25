@@ -11,25 +11,13 @@
 	<link type="text/css" rel="stylesheet" href="css/index.css"/>
         <link type="text/css" rel="stylesheet" href="css/jNotify.jquery.css"/>
         <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.cookie.js"></script>
         <script src='js/jNotify.jquery.min.js'></script>
         <script src="js/exit.js"></script>
         <script src="js/scripts.js"></script>
     </head>
     <body>
-        <div class="redbar">
-            <div class="redbar-wrapper">
-                    <div class="redbar-text">
-                            <p>
-                                    SPECIAL DISCOUNT ACTIVATED! - SAVE OVER 50% OFF SHIPPING &amp; HANDLING ON ALL ORDERS PLACED TODAY! ONLY $4.95! PER TRIAL</p>
-                    </div>
-            </div>
-        </div>
-        <div class="header-alert">
-                <b>WARNING:</b> Due to popular TV demand our stores are struggling to keep supply in stock. As of {{getDate(0)}}<br />
-                we do have a limited supply IN STOCK and ready to ship within 24 hours.
-        </div>
-        <div class="safe-purchase-badge">
-        </div>
+        
         <?php include_once('templates/offers/offer.html'); ?>
         <div class="wrapper">
         <!-- Index Content Blocks -->

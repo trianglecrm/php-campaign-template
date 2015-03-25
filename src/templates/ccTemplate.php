@@ -1,25 +1,3 @@
-<script>
-    $('document').ready(function() {
-        setTimeout(function(){
-            $('#paymentMethod').on('change', function() {
-                console.log('cambio');
-                type = this.value;
-                if(type == 1){
-                    $('#creditCard').attr('pattern','[0-9]{4} *[0-9]{6} *[0-9]{5}');
-                    $('#creditCard').attr('maxlength','15');
-                    $('#cvv').attr('pattern','[0-9]{4}');
-                    $('#cvv').attr('maxlength','4');
-                }
-                else{
-                    $('#creditCard').attr('pattern','[0-9]{13,16}');
-                    $('#creditCard').attr('maxlength','16');
-                    $('#cvv').attr('pattern','[0-9]{3}');
-                    $('#cvv').attr('maxlength','3');
-                }
-            });
-            }, 3000);
-    });
-</script>
 <?php
     
     $billingInfo;
@@ -32,20 +10,6 @@
              </script>';
         die();
     }
-
-    include 'TriangleCRM/Autoloader.php';
-    
-    require_once "TriangleCRM/formvalidator.php";
-    
-    use TriangleCRM\Controller as api;
-    
-
-    $controller = new Controller("boostrap");
-
-    $settings = json_decode($controller->GetModel("orderBootstrap"));  
-    $requiredJson = $controller->GetModel('ccFormRequired');
-    $required = json_decode($requiredJson);
-
     
     $show_form=true;
 
@@ -55,7 +19,6 @@
         $validator = new FormValidator();
         if($required->Result->paymentType){$validator->addValidation("paymentMethod","req","Please select the payment method");}
         if($required->Result->creditCard){$validator->addValidation("creditCard","req","Please fill in Credit Card");}
-        if($required->Result->creditCard){$validator->addValidation("creditCard","num","Please fill in Credit Card");}
         if($required->Result->exp){$validator->addValidation("month","req","Please select the expiration month");}
         if($required->Result->exp){$validator->addValidation("year","req","Please select the expiration year");}
         if($required->Result->cvv){$validator->addValidation("securityCode","req","Please fill in security code");}
@@ -68,6 +31,7 @@
                 "trialPackageID"=> $settings->Result->trialPackageID,
                 "chargeForTrial"=> $settings->Result->chargeForTrial,
                 "campaign_id"=> $settings->Result->campaign_id,
+                "sendConfirmationEmail" =>$settings->Result->sendConfirmationEmail,
                 "firstname"=>$billingInfo['firstname'],
                 "lastname"=>$billingInfo['lastname'],
                 "address1"=>$billingInfo['address1'],
@@ -92,8 +56,8 @@
                 );
             $action = 'CreateSubscription';
             $result = $controller->ProcessRequest($vars,$action);
-            if($result.State == 'Success'){
-                echo '<script> internal = 1 ; window.location.href = "'.$settings->Result->successRedirect.'";</script>';
+            if($result->State == 'Success' || $result->Info == 'Test charge. ERROR'){
+                echo '<script> internal = 1 ; window.location.href = "'.$settings->Result->successRedirect.'?successDownsell='.$settings->Result->successDownSell.'";</script>';
             }
             else{
                 echo '<script>alert('.$result->Info.')</script>';
@@ -115,7 +79,7 @@
 ?>
 
 
-<form method="post" name='opt_in_form' id='opt_in_form'>
+<form method="post" name='opt_in_form' id='opt_in_form' class='CCform templateForm'>
     <input type="hidden" value="submit" name="Submit"/>
     <div class="cc-form form-inner-container">
         <div class='form-element form-input-full' >
@@ -147,7 +111,8 @@
           required
           data-credit-card-type
           pattern="/^[0-9]+$/"
-          placeholder="Card Number" >
+          placeholder="Card Number"
+          class='onlyNumbers'>
         </div>
         <?php } ?>
         <?php if($required->Result->exp){ ?>
@@ -195,12 +160,12 @@
                 placeholder="CCV"
                 required
                 pattern="/^[0-9]+$/"
-                class="ccv">
+                class="ccv onlyNumbers">
             <a href="javascript:;" class="cvv-help">Whats This?</a>
             <div class="whatiscvv" style="" ></div>
         </div>
         <?php } ?>
-        <button id="button-submit" type="submit" class='form-button'></button>
+        <button id="button-submit" type="submit" class='form-button'>submit</button>
         <div class="button-processing" id="button-processing" style="display:none;"><img src="img/loading.gif" /><br />Processing...</div>
     </div>
 </form>
